@@ -27,8 +27,10 @@ RUN /etc/init.d/postgresql start \
     && createdb -O admin empty \
     && createdb -O admin empty_sezona \
     && cd /tmp \
-    && curl -O  http://download.bring.out.ba/empty_4.6.9_template.backup \
-    && pg_restore -Fc -d empty empty_4.6.9_template.backup 
+    && curl -O  http://download.bring.out.ba/empty_4.8.0_template.backup \
+    && pg_restore -Fc -d empty empty_4.8.0_template.backup \
+    && rm -rf empty_4.8.0_template.backup
+  
 
 
 # psql settings 
