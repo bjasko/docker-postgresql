@@ -14,6 +14,9 @@ RUN apt-get install -y locales && rm -rf /var/lib/apt/lists/* \
     && locale-gen bs_BA.UTF-8 \
     && update-locale LANG=bs_BA.UTF-8
 
+# set the correct timezone
+RUN echo "Europe/Sarajevo" > /etc/timezone && dpkg-reconfigure -f noninteractive tzdata
+
 # apt-get psql + utils 
 RUN apt-get update && apt-get -y -q install python-software-properties software-properties-common curl
 RUN apt-get -y -q install postgresql-9.1 postgresql-client-9.1 postgresql-contrib-9.1
